@@ -80,4 +80,12 @@ class GameBoardImpl<T>(width: Int) : SquareBoardImpl(width), GameBoard<T> {
     override fun all(predicate: (T?) -> Boolean): Boolean {
         return getAllCells().all { cell -> predicate(gameBoard[cell]) }
     }
+
+    override fun toString() =
+            (1..4).joinToString("\n") { i ->
+                (1..4).joinToString(" ") { j ->
+                    "${get(getCell(i, j)) ?: "-"}"
+                }
+            }
+
 }
